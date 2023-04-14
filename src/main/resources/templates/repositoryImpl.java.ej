@@ -1,0 +1,26 @@
+package #(pkgRepositoryImpl);
+
+import #(package.Entity).#(entity);
+import #(package.Mapper).#(table.mapperName);
+import #(pkgRepository).#(entity)Repository;
+import #(superServiceImplClassPackage);
+import org.springframework.stereotype.Service;
+
+/**
+ * <p>
+ * #(table.comment) Repository Implementation
+ * </p>
+ *
+ * @author #(author)
+ * @since #(date)
+ */
+@Service
+#if(kotlin)
+open class #(entity)RepositoryImpl : #(superServiceImplClass)<#(table.mapperName), #(entity)>()#if(table.isServiceInterface()), #(table.serviceName)#end {
+
+}
+#else
+public class #(entity)RepositoryImpl extends #(superServiceImplClass)<#(table.mapperName), #(entity)> implements #(entity)Repository {
+
+}
+#end

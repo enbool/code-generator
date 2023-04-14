@@ -1,0 +1,20 @@
+package #(pkgRepository);
+
+import #(package.Entity).#(entity);
+import #(superServiceClassPackage);
+
+/**
+ * <p>
+ * #(table.comment) Repository
+ * </p>
+ *
+ * @author #(author)
+ * @since #(date)
+ */
+#if(kotlin)
+interface #(entity)Repository : #(superServiceClass)<#(entity)>
+#else
+public interface #(entity)Repository extends #(superServiceClass)<#(entity)> {
+
+}
+#end

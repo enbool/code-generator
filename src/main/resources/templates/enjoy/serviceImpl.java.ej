@@ -1,12 +1,12 @@
 package #(package.ServiceImpl);
 
 import #(package.Entity).#(entity);
+import #(package.Mapper).#(table.mapperName);
 #if(table.isServiceInterface())
 import #(package.Service).#(table.serviceName);
 #end
-import #(pkgRepository).#(entity)Repository;
+import #(superServiceImplClassPackage);
 import org.springframework.stereotype.Service;
-import org.springframework.beans.factory.annotation.Autowired;
 
 /**
  * <p>
@@ -22,8 +22,7 @@ open class #(table.serviceImplName) : #(superServiceImplClass)<#(table.mapperNam
 
 }
 #else
-public class #(table.serviceImplName) #if(table.isServiceInterface()) implements #(table.serviceName)#end {
-    @Autowired
-    private #(entity)Repository #(entity)Repository;
+public class #(table.serviceImplName) extends #(superServiceImplClass)<#(table.mapperName), #(entity)>#if(table.isServiceInterface()) implements #(table.serviceName)#end {
+
 }
 #end
