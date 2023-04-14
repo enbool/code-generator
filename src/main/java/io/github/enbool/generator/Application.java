@@ -19,16 +19,16 @@ public class Application {
         String author = "wumin";
 
 
-        // config mysql
+        // todo config mysql
         String url = "jdbc:mysql://localhost:3306/dict?useUnicode=true&characterEncoding=utf-8&useSSL=false&serverTimezone=Asia/Shanghai";
         String username = "root";
         String password = "123456";
-
+        // todo config output
         String outputDir = "D://dict";
         String packageName = "io.github.enbool";
         String moduleName = "dict";
 
-        // config table
+        // todo config table
         String[] includeTables = new String[]{"new_word"};
         String[] excludeTables = new String[]{};
         String[] tablePrefix = new String[]{};
