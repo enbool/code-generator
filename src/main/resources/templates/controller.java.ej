@@ -23,15 +23,17 @@ import io.swagger.v3.oas.annotations.tags.Tag;
  * @author #(author)
  * @since #(date)
  */
- @OpenAPIDefinition(
-         info = @Info(
-                 title = "#(entity) API",
-                 version = "1.0",
-                 description = "#(entity) API"
-         ), tags = {
-         @Tag(name = "#(entity)", description = "#(entity) API")
- }
- )
+#if(springdoc)
+@OpenAPIDefinition(
+     info = @Info(
+             title = "#(entity) API",
+             version = "1.0",
+             description = "#(entity) API"
+     ), tags = {
+     @Tag(name = "#(entity)", description = "#(entity) API")
+}
+)
+#end
 #if(restControllerStyle)
 @RestController("#if(package.ModuleName)/#(package.ModuleName)#end/#if(controllerMappingHyphenStyle)#(controllerMappingHyphen)#else#(table.entityPath)#end")
 #else
