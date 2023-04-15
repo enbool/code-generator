@@ -9,6 +9,11 @@ import org.springframework.stereotype.Controller;
 #if(superControllerClassPackage)
 import #(superControllerClassPackage);
 #end
+#if(springdoc)
+import io.swagger.v3.oas.annotations.OpenAPIDefinition;
+import io.swagger.v3.oas.annotations.info.Info;
+import io.swagger.v3.oas.annotations.tags.Tag;
+#end
 
 /**
  * <p>
@@ -18,12 +23,20 @@ import #(superControllerClassPackage);
  * @author #(author)
  * @since #(date)
  */
+ @OpenAPIDefinition(
+         info = @Info(
+                 title = "#(entity) API",
+                 version = "1.0",
+                 description = "#(entity) API"
+         ), tags = {
+         @Tag(name = "#(entity)", description = "#(entity) API")
+ }
+ )
 #if(restControllerStyle)
-@RestController
+@RestController("#if(package.ModuleName)/#(package.ModuleName)#end/#if(controllerMappingHyphenStyle)#(controllerMappingHyphen)#else#(table.entityPath)#end")
 #else
-@Controller
+@Controller("#if(package.ModuleName)/#(package.ModuleName)#end/#if(controllerMappingHyphenStyle)#(controllerMappingHyphen)#else#(table.entityPath)#end")
 #end
-@RequestMapping("#if(package.ModuleName)/#(package.ModuleName)#end/#if(controllerMappingHyphenStyle)#(controllerMappingHyphen)#else#(table.entityPath)#end")
 #if(kotlin)
 class #(table.controllerName)#if(superControllerClass) : #(superControllerClass)()#end
 
